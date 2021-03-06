@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<string.h>
+int LCS(char s1[],char s2[]){
+    int len=0;
+    int len1=strlen(s1);
+    int len2=strlen(s2);
+    int dp[10][10]={0};
+    if(s1==NULL || s2==NULL)
+    return 0;
+    for(int i=1;i<len1;i++){
+        for(int j=1;j<len2;j++){
+            if(s1[i]!=s2[j])
+              dp[i][j]=0;  
+            else
+                 dp[i][j]= dp[i-1][j-1]+1;  
+                 if(len<dp[i][j]) 
+               len=dp[i][j];      
+        }  
+    }
+    return len;   
+}
+
+int main(){
+    char s1[10];
+    char s2[10];
+    int res;
+    scanf("%s %s",&s1,&s2);
+    res=LCS(s1,s2);
+    printf("%d",res);
+    return 0;
+}
